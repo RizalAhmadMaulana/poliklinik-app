@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\PoliController;
+use App\Http\Controllers\Admin\DokterController;
+use App\Http\Controllers\Admin\PasienController;
+use App\Http\Controllers\Admin\ObatController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -37,4 +40,31 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');
     Route::resource('polis', PoliController::class);
+});
+
+Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard');
+    })->name('admin.dashboard');
+    Route::resource('polis', PoliController::class);
+    Route::resource('dokter', DokterController::class);
+});
+
+Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard');
+    })->name('admin.dashboard');
+    Route::resource('polis', PoliController::class);
+    Route::resource('dokter', DokterController::class);
+    Route::resource('pasien', PasienController::class);
+});
+
+Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard');
+    })->name('admin.dashboard');
+    Route::resource('polis', PoliController::class);
+    Route::resource('dokter', DokterController::class);
+    Route::resource('pasien', PasienController::class);
+    Route::resource('obat', ObatController::class);
 });
