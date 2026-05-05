@@ -64,4 +64,3 @@ use Illuminate\Notifications\Notifiable;
     }
 
 }
-
